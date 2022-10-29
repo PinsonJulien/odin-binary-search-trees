@@ -1,4 +1,4 @@
-# Odin - Odin binary search trees
+# Odin - Odin binary search trees (Work in progress)
 
 The 15th [project](https://www.theodinproject.com/lessons/javascript-binary-search-trees) of The Odin Project, Javascript path.
 
