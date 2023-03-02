@@ -4,10 +4,10 @@ export default class Tree {
   public root: Node;
 
   constructor(arr: Array<any>) {
-
+    this.root = this.buildTree(arr);
   }
 
-  private buildTree(arr: Array<any>) : void {
+  private buildTree(arr: Array<any>) : Node {
 
   }
 
