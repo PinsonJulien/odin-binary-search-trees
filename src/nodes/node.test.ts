@@ -9,7 +9,7 @@ describe('Node', () => {
   });
 
   test('data value', () => {
-    node = new Node();
+    node = new Node(data);
     expect(node.data).toEqual(data);
   });
 

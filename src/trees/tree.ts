@@ -4,11 +4,25 @@ export default class Tree {
   public root: Node;
 
   constructor(arr: Array<any>) {
-    this.root = this.buildTree(arr);
+    // Sort and remove duplicates
+    const sorted = [
+      ...new Set(
+        arr.sort((a, b) => a - b)
+      )
+    ];
+
+    this.root = this.buildTree(sorted);
   }
 
-  private buildTree(arr: Array<any>) : Node {
+  private buildTree(arr: Array<any> = []) : Node|null {
+    if (!arr.length) return null;
 
+    const mid = Math.floor(arr.length / 2);
+    return new Node(
+      arr[mid],
+      this.buildTree(arr.slice(0, mid)),
+      this.buildTree(arr.slice(mid + 1))
+    );
   }
 
   public insert(value: any) : void {
