@@ -5,8 +5,8 @@ export default class Node {
 
   constructor(data: any, left: Node|null = null, right: Node|null = null) {
     this.data = data;
-
-    if (left) this.left = left;
-    if (right) this.right = right;
+    
+    this.left = left;
+    this.right = right;
   }
 }

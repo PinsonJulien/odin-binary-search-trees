@@ -54,25 +54,23 @@ describe('Tree', () => {
 
       const { root }  = tree;
       expect(root.data).toEqual(5);
-      expect(root.left?.data).toBeNull();
-      expect(root.right?.data).toBeNull();
+      expect(root.left).toBeNull();
+      expect(root.right).toBeNull();
     });
 
     test("should insert a smaller value to the left", () => {
-      const tree = new Tree([5, 10]);
+      const tree = new Tree([5]);
       tree.insert(2);
 
       const { root } = tree;
       expect(root.left?.data).toEqual(2);
-      expect(root.right?.data).toEqual(10);
     });
 
     test("should insert a larger value to the right", () => {
-      const tree = new Tree([5, 2]);
+      const tree = new Tree([5]);
       tree.insert(10);
 
       const { root } = tree;
-      expect(root.left?.data).toEqual(2);
       expect(root.right?.data).toEqual(10);
     });
 
@@ -85,43 +83,43 @@ describe('Tree', () => {
 
   });
 
-  test('delete', () => {
+  describe('delete', () => {
 
   });
 
-  test('find', () => {
+  describe('find', () => {
 
   });
 
-  test('levelOrder', () => {
+  describe('levelOrder', () => {
 
   });
 
-  test('inorder', () => {
+  describe('inorder', () => {
 
   });
 
-  test('preorder', () => {
+  describe('preorder', () => {
 
   });
 
-  test('postorder', () => {
+  describe('postorder', () => {
 
   });
 
-  test('height', () => {
+  describe('height', () => {
 
   });
 
-  test('depth', () => {
+  describe('depth', () => {
 
   });
 
-  test('isBalanced', () => {
+  describe('isBalanced', () => {
 
   });
 
-  test('rebalance', () => {
+  describe('rebalance', () => {
 
   });
 

@@ -5,7 +5,7 @@ export default class Tree {
 
   constructor(arr: Array<any> = []) {
     if (!arr.length) return;
-    
+
     // Sort and remove duplicates
     const sorted = [
       ...new Set(
@@ -27,8 +27,29 @@ export default class Tree {
     );
   }
 
-  public insert(value: any) : void {
+  public insert(data: any) : void {
+    if (!this.root) {
+      this.root = new Node(data);
+      return;
+    }
 
+    this.recursiveInsert(data, this.root);
+  }
+
+  private recursiveInsert(data: any, node: Node): void {
+    if (data < node.data) {
+      if (!node.left) 
+        node.left = new Node(data);
+      else 
+        this.recursiveInsert(data, node.left);
+    }
+
+    else {
+      if (!node.right) 
+        node.right = new Node(data);
+      else 
+        this.recursiveInsert(data, node.right);
+    }
   }
 
   public delete(value: any) : void {
