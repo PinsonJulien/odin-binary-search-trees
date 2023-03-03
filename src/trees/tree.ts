@@ -1,9 +1,11 @@
 import Node from "../nodes/node";
 
 export default class Tree {
-  public root: Node;
+  public root: Node = null;
 
-  constructor(arr: Array<any>) {
+  constructor(arr: Array<any> = []) {
+    if (!arr.length) return;
+    
     // Sort and remove duplicates
     const sorted = [
       ...new Set(

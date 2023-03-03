@@ -47,7 +47,41 @@ describe('Tree', () => {
 
   });
 
-  test('insert', () => {
+  describe('insert', () => { 
+    test('should insert a value into an empty tree', () => {
+      const tree = new Tree();
+      tree.insert(5);
+
+      const { root }  = tree;
+      expect(root.data).toEqual(5);
+      expect(root.left?.data).toBeNull();
+      expect(root.right?.data).toBeNull();
+    });
+
+    test("should insert a smaller value to the left", () => {
+      const tree = new Tree([5, 10]);
+      tree.insert(2);
+
+      const { root } = tree;
+      expect(root.left?.data).toEqual(2);
+      expect(root.right?.data).toEqual(10);
+    });
+
+    test("should insert a larger value to the right", () => {
+      const tree = new Tree([5, 2]);
+      tree.insert(10);
+
+      const { root } = tree;
+      expect(root.left?.data).toEqual(2);
+      expect(root.right?.data).toEqual(10);
+    });
+
+    test("should insert a value at the correct position in a larger tree", () => {
+      const tree = new Tree([5, 2, 7, 1, 3, 6, 8]);
+      tree.insert(4);
+
+      expect(tree.root.left?.right?.right?.data).toEqual(4);
+    });
 
   });
 
