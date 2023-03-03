@@ -115,7 +115,19 @@ export default class Tree {
   }
 
   public find(value: any) : Node | null {
-    return;
+    if (!this.root) return null;
+
+    let current = this.root;
+    while (current) {
+      if (value === current.data)
+        return current;
+
+      current = (value < current.data) 
+        ? current.left 
+        : current.right;
+    }
+  
+    return null;
   }
 
   public levelOrder(fct: Function): Array<any> {
