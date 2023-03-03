@@ -114,7 +114,7 @@ export default class Tree {
     return true;
   }
 
-  public find(value: any) : Node {
+  public find(value: any) : Node | null {
     return;
   }
 

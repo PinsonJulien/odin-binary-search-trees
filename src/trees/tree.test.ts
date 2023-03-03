@@ -140,10 +140,38 @@ describe('Tree', () => {
       expect(tree.root.left?.left?.data).toEqual(1);
       expect(tree.root.left?.right?.data).toEqual(3);
     });
-    
+
   });
 
   describe('find', () => {
+    test('Find method should return the node with the given value', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
+      const node = tree.find(6);
+      expect(node).not.toBeNull();
+      expect(node?.data).toEqual(6);
+    });
+
+    test('Find method should return null when given value is not in the tree', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
+      let node = tree.find(9);
+      expect(node).toBeNull();
+
+      node = tree.find(0);
+      expect(node).toBeNull();
+    });
+
+    test('Find method should return null when the tree is empty', () => {
+      const tree = new Tree();
+      const node = tree.find(6);
+      expect(node).toBeNull();
+    });
+
+    test('Find method should return the root node when the value is the root value', () => {
+      const tree = new Tree([2, 4, 6]);
+      const node = tree.find(4);
+      expect(node).not.toBeNull();
+      expect(node?.data).toEqual(4);
+    });
 
   });
 
