@@ -52,8 +52,66 @@ export default class Tree {
     }
   }
 
-  public delete(value: any) : void {
+  public delete(data: any) : boolean {
+    if (!this.root) return false;
 
+    let current = this.root;
+    let parent: Node|null = null;
+    let isLeftChild = false;
+  
+    // Find the node to be deleted
+    while (current && current.data !== data) {
+      parent = current;
+      if (data < current.data) {
+        current = current.left;
+        isLeftChild = true;
+      } else {
+        current = current.right;
+        isLeftChild = false;
+      }
+    }
+  
+    // If the node is not found, return false
+    if (!current) return false;
+
+    let replacementNode = null;
+  
+    // Case 1: The node to be deleted has no children
+    if (!current.left && !current.right)
+      replacementNode = null;
+
+    // Case 2: The node to be deleted has only one child
+    else if (!current.left || !current.right)
+      replacementNode = current.left || current.right;
+
+    // Case 3: The node to be deleted has two children
+    else {
+      let successorParent = current;
+      let successor = current.right;
+  
+      while (successor.left) {
+        successorParent = successor;
+        successor = successor.left;
+      }
+  
+      if (successor !== current.right) {
+        successorParent.left = successor.right;
+        successor.right = current.right;
+      }
+  
+      successor.left = current.left;
+
+      replacementNode = successor;
+    }
+
+    if (current === this.root)
+      this.root = replacementNode;
+    else if (isLeftChild)
+      parent.left = replacementNode;
+    else
+      parent.right = replacementNode;
+
+    return true;
   }
 
   public find(value: any) : Node {
