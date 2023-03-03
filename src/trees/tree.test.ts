@@ -85,6 +85,62 @@ describe('Tree', () => {
 
   describe('delete', () => {
 
+    test("delete node with no children", () => {
+      const tree = new Tree([2, 4, 6]);
+      tree.delete(6);
+      /**
+      *        4
+      *      /  
+      *     2     
+      */
+      expect(tree.root.right).toBeNull();
+    });
+
+    test("delete node with one child", () => {
+      const tree = new Tree([1, 2, 4, 6]);
+      tree.delete(2);
+      /**
+      *        4
+      *      /   \
+      *     1     6
+      */     
+      expect(tree.root.left?.data).toEqual(1);
+      expect(tree.root.left?.left).toBeNull();
+      expect(tree.root.left?.right).toBeNull();
+    });
+
+    test("delete node with two children - case 1", () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      tree.delete(2);
+      /*
+              4
+            /   \
+           3     6
+          /     / \
+         1     5   7
+      */
+      expect(tree.root.left?.data).toBe(3);
+      expect(tree.root.left?.left?.data).toBe(1);
+    });
+
+    test("delete node with two children - case 2", () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      tree.delete(4);
+      /*
+              5
+            /   \
+           2     6
+          / \     \
+         1   3     7
+      */
+      expect(tree.root.data).toBe(5);
+      expect(tree.root.right?.left).toBeNull();
+      expect(tree.root.right?.right?.data).toEqual(7);
+      expect(tree.root.left?.data).toEqual(2);
+      expect(tree.root.left?.left?.data).toEqual(1);
+      expect(tree.root.left?.right?.data).toEqual(3);
+    });
+    
   });
 
   describe('find', () => {
