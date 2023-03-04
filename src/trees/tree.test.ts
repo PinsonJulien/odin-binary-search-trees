@@ -218,7 +218,24 @@ describe('Tree', () => {
   });
 
   describe('preorder', () => {
+    test('should traverse the tree in preorder', () => {
+      const tree = new Tree([5, 3, 4, 1, 2, 7, 6, 8]);
 
+      const result = [];
+      const fn = node => result.push(node.data);
+  
+      tree.preorder(fn);
+  
+      expect(result).toEqual([5, 3, 1, 2, 4, 7, 6, 8]);
+    });
+  
+    test('should return an array of values if no function is given', () => {
+      const tree = new Tree([5, 3, 4, 1, 2, 7, 6, 8]);
+
+      const result = tree.preorder();
+      
+      expect(result).toEqual([5, 3, 1, 2, 4, 7, 6, 8]);
+    });
   });
 
   describe('postorder', () => {
