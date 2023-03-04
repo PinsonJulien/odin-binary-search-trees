@@ -155,7 +155,21 @@ export default class Tree {
   }
 
   public inorder(fct?: Function): Array<any> {
-    return [];
+    const result = [];
+    const traverse = (node: Node) => {
+      if (!node) return;
+      traverse(node.left);
+
+      if (fct) fct(node);
+      else result.push(node.data);
+
+      traverse(node.right);
+    };
+
+    traverse(this.root);
+
+    if (!fct)
+      return result;
   }
 
   public preorder(fct?: Function): Array<any> {
