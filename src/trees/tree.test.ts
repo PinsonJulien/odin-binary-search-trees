@@ -272,7 +272,21 @@ describe('Tree', () => {
   });
 
   describe('height', () => {
-
+    test('should return 0 when the node is null', () => {
+      const tree = new Tree();
+      expect(tree.height()).toEqual(0);
+    });
+  
+    test('should return the height of the tree', () => {
+      const tree = new Tree([4, 2, 6, 1, 3, 5, 7]);
+      expect(tree.height()).toEqual(3);
+    });
+  
+    test('should return the height of the given node', () => {
+      const tree = new Tree([4, 2, 6, 1, 3, 5, 7]);
+      const node = tree.find(6);
+      expect(tree.height(node)).toEqual(2);
+    });
   });
 
   describe('depth', () => {

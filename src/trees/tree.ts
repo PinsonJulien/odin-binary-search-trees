@@ -210,11 +210,11 @@ export default class Tree {
       return result;
   }
 
-  public height(node: Node): number {
+  public height(node?: Node): number {
     return 0;
   }
 
-  public depth(node: Node): number {
+  public depth(node?: Node): number {
     return 0;
   }
 
