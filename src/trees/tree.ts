@@ -131,7 +131,27 @@ export default class Tree {
   }
 
   public levelOrder(fct?: Function): Array<any> {
-    return []
+    if (!this.root)
+      return [];
+
+    const queue: Node[] = [ this.root ];
+    const values: Array<any> = [];
+
+    while (queue.length) {
+      const node = queue.shift();
+      values.push(node.data);
+
+      if (node.left)
+        queue.push(node.left);
+
+      if (node.right)
+        queue.push(node.right);
+
+      if (fct)
+        fct(node);
+    }
+
+    return values;
   }
 
   public inorder(fct: Function): Array<any> {
