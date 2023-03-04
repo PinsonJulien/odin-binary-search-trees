@@ -1,4 +1,4 @@
-# Odin - Odin binary search trees (Work in progress)
+# Odin - Odin binary search trees
 
 The 15th [project](https://www.theodinproject.com/lessons/javascript-binary-search-trees) of The Odin Project, Javascript path.
 
@@ -6,8 +6,9 @@ The 15th [project](https://www.theodinproject.com/lessons/javascript-binary-sear
 https://replit.com/@PinsonJulien/odin-binary-search-trees
 
 ## Instructions:
-- npm install
-- npm run test
+- `npm install`
+- `npm run start` to try the driver script.
+- `npm run test` to run all unit tests.
 
 ## Known issues
 Currently none
