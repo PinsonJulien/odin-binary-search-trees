@@ -249,12 +249,13 @@ export default class Tree {
 
       return checkBalanced(node.left) && checkBalanced(node.right);
     }
-    
+
     return checkBalanced(this.root);
   }
 
   public rebalance(): void {
-
+    const arr = this.inorder() as Array<Node>;
+    this.root = this.buildTree(arr);
   }
 
   // Copied from the assignment, with added types.
