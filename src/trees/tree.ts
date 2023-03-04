@@ -130,7 +130,7 @@ export default class Tree {
     return null;
   }
 
-  public levelOrder(fct: Function): Array<any> {
+  public levelOrder(fct?: Function): Array<any> {
     return []
   }
 
