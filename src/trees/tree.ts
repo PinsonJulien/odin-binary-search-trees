@@ -210,8 +210,13 @@ export default class Tree {
       return result;
   }
 
-  public height(node?: Node): number {
-    return 0;
+  public height(node: Node = this.root): number {
+    if (!node) return 0;
+
+    const leftHeight = this.height(node.left);
+    const rightHeight = this.height(node.right);
+
+    return Math.max(leftHeight, rightHeight) + 1;
   }
 
   public depth(node?: Node): number {
