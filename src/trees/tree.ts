@@ -154,7 +154,7 @@ export default class Tree {
     return values;
   }
 
-  public inorder(fct?: Function): Array<any> {
+  public inorder(fct?: Function): Array<any> | void {
     const result = [];
     const traverse = (node: Node) => {
       if (!node) return;
@@ -172,8 +172,23 @@ export default class Tree {
       return result;
   }
 
-  public preorder(fct?: Function): Array<any> {
-    return [];
+  public preorder(fct?: Function): Array<any> | void {
+    const result = [];
+
+    const traverse = (node) => {
+      if (!node) return;
+
+      if (fct) fct(node);
+      else result.push(node.data);
+
+      traverse(node.left);
+      traverse(node.right);
+    };
+  
+    traverse(this.root);
+
+    if (!fct) 
+      return result;
   }
 
   public postorder(fct?: Function): Array<any> {

@@ -198,43 +198,43 @@ describe('Tree', () => {
 
   describe('inorder', () => {
     test('should traverse the tree in order', () => {
-      const tree = new Tree([5, 3, 4, 1, 2, 7, 6, 8]);
+      const tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
 
       const result = [];
       const fn = (node: Node) => result.push(node.data);
 
       tree.inorder(fn);
   
-      expect(result).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+      expect(result).toEqual([4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]);
     });
   
     test('should return an array of values if no function is given', () => {
-      const tree = new Tree([5, 3, 4, 1, 2, 7, 6, 8]);
+      const tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
   
       const result = tree.inorder();
   
-      expect(result).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+      expect(result).toEqual([4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]);
     });
   });
 
   describe('preorder', () => {
     test('should traverse the tree in preorder', () => {
-      const tree = new Tree([5, 3, 4, 1, 2, 7, 6, 8]);
-
+      const tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
+  
       const result = [];
       const fn = node => result.push(node.data);
   
       tree.preorder(fn);
   
-      expect(result).toEqual([5, 3, 1, 2, 4, 7, 6, 8]);
+      expect(result).toEqual([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
     });
   
     test('should return an array of values if no function is given', () => {
-      const tree = new Tree([5, 3, 4, 1, 2, 7, 6, 8]);
-
+      const tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
+  
       const result = tree.preorder();
-      
-      expect(result).toEqual([5, 3, 1, 2, 4, 7, 6, 8]);
+  
+      expect(result).toEqual([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
     });
   });
 
