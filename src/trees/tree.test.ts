@@ -290,7 +290,25 @@ describe('Tree', () => {
   });
 
   describe('depth', () => {
-
+    test('should return 0 for root node', () => {
+      const tree = new Tree([1]);
+      expect(tree.depth(tree.root)).toBe(0);
+    });
+  
+    test('should return 1 for child node of root', () => {
+      const tree = new Tree([1, 2]);
+      expect(tree.depth(tree.root.left)).toBe(1);
+    });
+  
+    test('should return 2 for grandchild node of root', () => {
+      const tree = new Tree([1, 2, 3, 4, 5]);
+      expect(tree.depth(tree.root.left.left)).toBe(2);
+    });
+  
+    test('should return 0 if node is not specified', () => {
+      const tree = new Tree([1]);
+      expect(tree.depth()).toBe(0);
+    });
   });
 
   describe('isBalanced', () => {

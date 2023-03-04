@@ -219,7 +219,7 @@ export default class Tree {
     return Math.max(leftHeight, rightHeight) + 1;
   }
 
-  public depth(node?: Node): number {
+  public depth(node: Node = this.root): number {
     return 0;
   }
 
