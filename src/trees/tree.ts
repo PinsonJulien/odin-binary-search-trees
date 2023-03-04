@@ -220,6 +220,20 @@ export default class Tree {
   }
 
   public depth(node: Node = this.root): number {
+    let depth = 0;
+    let currentNode = this.root;
+  
+    while (currentNode !== null) {
+      if (node.data === currentNode.data)
+        return depth;
+      
+      currentNode = (node.data < currentNode.data)
+        ? currentNode.left
+        : currentNode.right;
+
+      depth++;
+    }
+  
     return 0;
   }
 
