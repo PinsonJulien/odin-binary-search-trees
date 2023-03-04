@@ -328,7 +328,22 @@ describe('Tree', () => {
   });
 
   describe('rebalance', () => {
+    test('should rebalance the tree if it is unbalanced', () => {
+      const tree = new Tree([1, 2, 3, 4, 5]);
+      tree.delete(5);
+      tree.delete(4);
 
+      expect(tree.isBalanced()).toBe(false);
+  
+      tree.rebalance();
+      expect(tree.isBalanced()).toBe(true);
+    });
+  
+    test('should not affect the tree if it is already balanced', () => {
+      const tree = new Tree([1, 2, 3, 4, 5]);
+      tree.rebalance();
+      expect(tree.isBalanced()).toBe(true);
+    });
   });
 
 });
