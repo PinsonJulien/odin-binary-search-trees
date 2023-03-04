@@ -191,8 +191,23 @@ export default class Tree {
       return result;
   }
 
-  public postorder(fct?: Function): Array<any> {
-    return [];
+  public postorder(fct?: Function): Array<any> | void {
+    const result = [];
+
+    const traverse = (node) => {
+      if (!node) return;
+
+      traverse(node.left);
+      traverse(node.right);
+
+      if (fct) fct(node);
+      else result.push(node.data);
+    };
+  
+    traverse(this.root);
+
+    if (!fct) 
+      return result;
   }
 
   public height(node: Node): number {
