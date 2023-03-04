@@ -319,7 +319,9 @@ describe('Tree', () => {
     });
   
     test('should return false for an unbalanced tree', () => {
-      const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      tree.insert(8);
+      tree.insert(9);
   
       expect(tree.isBalanced()).toBe(false);
     });

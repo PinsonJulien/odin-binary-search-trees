@@ -238,11 +238,23 @@ export default class Tree {
   }
 
   public isBalanced(): boolean {
-    return true;
+    const checkBalanced = (node: Node) => {
+      if (!node) return true;
+
+      const leftHeight = this.height(node.left);
+      const rightHeight = this.height(node.right);
+
+      const diff = Math.abs(leftHeight - rightHeight);
+      if (diff > 1) return false;
+
+      return checkBalanced(node.left) && checkBalanced(node.right);
+    }
+    
+    return checkBalanced(this.root);
   }
 
   public rebalance(): void {
-    
+
   }
 
   // Copied from the assignment, with added types.
