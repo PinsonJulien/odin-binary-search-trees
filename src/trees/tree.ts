@@ -241,7 +241,9 @@ export default class Tree {
     return true;
   }
 
-  public rebalance(): void {}
+  public rebalance(): void {
+    
+  }
 
   // Copied from the assignment, with added types.
   public prettyPrint(node: Node, prefix = '', isLeft = true) {
