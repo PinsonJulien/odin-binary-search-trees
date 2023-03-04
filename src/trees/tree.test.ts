@@ -197,49 +197,78 @@ describe('Tree', () => {
   
 
   describe('inorder', () => {
-    test('should traverse the tree in order', () => {
-      const tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
+    let tree: Tree;
 
+    beforeEach(() => {
+      tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
+    });
+
+    const expectedOrder = [4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90];
+
+    test('should traverse the tree in order', () => {
       const result = [];
       const fn = (node: Node) => result.push(node.data);
 
       tree.inorder(fn);
   
-      expect(result).toEqual([4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]);
+      expect(result).toEqual(expectedOrder);
     });
   
-    test('should return an array of values if no function is given', () => {
-      const tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
-  
+    test('should return an array of values if no function is given', () => {  
       const result = tree.inorder();
   
-      expect(result).toEqual([4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]);
+      expect(result).toEqual(expectedOrder);
     });
   });
 
   describe('preorder', () => {
+    let tree: Tree;
+
+    beforeEach(() => {
+      tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
+    });
+
+    const expectedOrder = [25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90];
+
     test('should traverse the tree in preorder', () => {
-      const tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
-  
       const result = [];
       const fn = node => result.push(node.data);
   
       tree.preorder(fn);
   
-      expect(result).toEqual([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
+      expect(result).toEqual(expectedOrder);
     });
   
-    test('should return an array of values if no function is given', () => {
-      const tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
-  
+    test('should return an array of values if no function is given', () => {  
       const result = tree.preorder();
   
-      expect(result).toEqual([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
+      expect(result).toEqual(expectedOrder);
     });
   });
 
   describe('postorder', () => {
+    let tree: Tree;
 
+    beforeEach(() => {
+      tree = new Tree([25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
+    });
+
+    const expectedOrder = [4, 12, 10, 18, 24, 22, 15, 31, 44, 35, 66, 90, 70, 50, 25];
+
+    test('should traverse the tree in postorder', () => {
+      const result = [];
+      const fn = (node: Node) => result.push(node.data);
+  
+      tree.postorder(fn);
+  
+      expect(result).toEqual(expectedOrder);
+    });
+  
+    test('should return an array of values if no function is given', () => {  
+      const result = tree.postorder();
+  
+      expect(result).toEqual(expectedOrder);
+    });
   });
 
   describe('height', () => {
