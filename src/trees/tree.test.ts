@@ -176,14 +176,14 @@ describe('Tree', () => {
   });
 
   describe("levelOrder", () => {
-    it("should return an array of node values in level order", () => {
+    test("should return an array of node values in level order", () => {
       const tree = new Tree([5, 3, 7, 2, 4, 6, 8]);
       
       const values = tree.levelOrder();
       expect(values).toEqual([5, 3, 7, 2, 4, 6, 8]);
     });
   
-    it("should apply the provided function to each node in level order", () => {
+    test("should apply the provided function to each node in level order", () => {
       const tree = new Tree([5, 3, 7, 2, 4, 6, 8]);
 
       const values: number[] = [];
@@ -197,7 +197,24 @@ describe('Tree', () => {
   
 
   describe('inorder', () => {
+    test('should traverse the tree in order', () => {
+      const tree = new Tree([5, 3, 4, 1, 2, 7, 6, 8]);
 
+      const result = [];
+      const fn = (node: Node) => result.push(node.data);
+
+      tree.inorder(fn);
+  
+      expect(result).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    });
+  
+    test('should return an array of values if no function is given', () => {
+      const tree = new Tree([5, 3, 4, 1, 2, 7, 6, 8]);
+  
+      const result = tree.inorder();
+  
+      expect(result).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    });
   });
 
   describe('preorder', () => {

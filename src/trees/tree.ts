@@ -154,15 +154,15 @@ export default class Tree {
     return values;
   }
 
-  public inorder(fct: Function): Array<any> {
+  public inorder(fct?: Function): Array<any> {
     return [];
   }
 
-  public preorder(fct: Function): Array<any> {
+  public preorder(fct?: Function): Array<any> {
     return [];
   }
 
-  public postorder(fct: Function): Array<any> {
+  public postorder(fct?: Function): Array<any> {
     return [];
   }
 
